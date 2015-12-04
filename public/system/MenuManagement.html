@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>菜单管理</title>
+
+    <!-- Bootstrap -->
+    <link href="../stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="../stylesheets/bootstrap-theme.min.css" rel="stylesheet">
+    <style>
+        .ddiconstyle {
+            color: #337ab7;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .ddtd {
+            color: #337ab7;
+            cursor: pointer;
+        }
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../javascripts/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../javascripts/bootstrap.min.js"></script>
+</head>
+<body>
+<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Library</a></li>
+    <li class="active">Data</li>
+</ol>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th></th>
+        <th></th>
+        <th width="40px">
+            <span class="glyphicon glyphicon-plus ddiconstyle" aria-hidden="true"
+                  ontouchstart="alert('ontouchstart')"></span>
+        </th>
+        <th width="40px"></th>
+    </tr>
+    </thead>
+    <tbody id="menutable">
+    <tr class="ddtd">
+        <td onclick="clickItem();">Mark</td>
+        <td>sdfsdfsdfs sdfsd fsd f sdf sd f sd fsd f sdfsdf sdf sd f</td>
+        <td>
+            <span class="glyphicon glyphicon-cog ddiconstyle" aria-hidden="true" onclick="alert('ddiconstyle')"></span>
+        </td>
+        <td>
+            <span class="glyphicon glyphicon-trash ddiconstyle" aria-hidden="true"
+                  onclick="alert('ddiconstyle')"></span>
+        </td>
+    </tr>
+    <tr class="ddtd">
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>
+            <span class="glyphicon glyphicon-cog ddiconstyle" aria-hidden="true"></span>
+        </td>
+        <td>
+            <span class="glyphicon glyphicon-trash ddiconstyle" aria-hidden="true"></span>
+        </td>
+    </tr>
+    <tr class="ddtd">
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>
+            <span class="glyphicon glyphicon-cog ddiconstyle" aria-hidden="true"></span>
+        </td>
+        <td>
+            <span class="glyphicon glyphicon-trash ddiconstyle" aria-hidden="true"></span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+<script>
+    function clickItem() {
+        $('#menutable').html(' <tr class="ddtd"><td>Larry</td><td>the Bird</td><td><span class="glyphicon glyphicon-cog ddiconstyle" aria-hidden="true"></span></td><td><span class="glyphicon glyphicon-trash ddiconstyle" aria-hidden="true"></span></td></tr>');
+    }
+</script>
