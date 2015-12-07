@@ -12,7 +12,7 @@ exports.run = function (req, res) {
     };
     user.findOne({username: username}, function (err, doc) {
         if (doc) {
-            if (doc.userPwd == password) {
+            if (doc.userpwd == password) {
                 resobject.success = true
             }
             else
