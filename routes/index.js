@@ -14,8 +14,17 @@ router.all('/ajax/*', function (req, res) {
 router.get('/ejs/*', function (req, res) {
     var pathObject = path.parse(req.url);
     var urlObject = url.parse(req.url);
-    var data = require('..' + urlObject.pathname);
-    res.render(pathObject.name, data);
+    var fn = require('..' + urlObject.pathname);
+    //创建promise
+    var promise = new Promise(fn);
+    //绑定处理程序
+    promise.then(function (data) {
+        //promise成功的话会执行这里
+        res.render(pathObject.name, data);
+    }, function (err) {
+        //promise失败会执行这里
+        res.send('页面加载失败！');
+    });
 });
 
 router.get('/extjs/*', function (req, res) {

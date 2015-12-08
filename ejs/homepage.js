@@ -4,7 +4,7 @@
 
 var data = [
     {
-        name: '菜单1',
+        name: '菜单ssssss1',
         children: [
             {
                 name: '子菜单1',
@@ -21,7 +21,11 @@ var data = [
         url: 'toolbar.html'
     }
 ]
-module.exports = {
-    menu: data,
-    title: 'zzzzzzzzzzz'
-};
+module.exports = function (resolve, reject) {
+    var rdata = {
+        menu: data,
+        title: 'hei'
+    };
+    resolve(rdata);
+}
+
