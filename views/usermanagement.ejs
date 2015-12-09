@@ -59,7 +59,7 @@
         </td>
         <td>
             <span class="glyphicon glyphicon-trash ddiconstyle" aria-hidden="true"
-                  ></span>
+                    ></span>
         </td>
     </tr>
     <% } %>
@@ -72,7 +72,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">新增用户</h4>
+                <h3 class="modal-title" id="myModalLabel" style="font-weight: bold">新增用户</h3>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" id="userinfo">
@@ -90,17 +90,16 @@
                             <input class="form-control" id="personname" placeholder="personname">
                         </div>
                     </div>
-
-                        <div class="alert alert-success" role="alert" id="promptmessage" style="display: none;padding-bottom:15px;margin: 0;height: 36px;">
-
-
+                    <div id="promptmessage" class="alert alert-success hidden">
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" id="close" style="display: inline">关闭</button>
-                <button type="button" class="btn btn-primary" id="saveuser" style="display: inline">保存</button>
-                <button type="button" class="btn btn-default" id="saveclose" style="display: none">关闭</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="close">
+                    关闭
+                </button>
+                <button type="button" class="btn btn-primary" id="saveuser">保存</button>
+                <button type="button" class="btn btn-default hidden" id="saveclose">关闭</button>
             </div>
 
         </div>

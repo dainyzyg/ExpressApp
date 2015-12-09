@@ -22,10 +22,10 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (resobject) {
                 if (resobject.success) {
-                    $('#close').css('display', 'none');
-                    $('#saveuser').css('display', 'none');
-                    $('#saveclose').css('display', 'inline');
-                    $('#promptmessage').css('display', 'block');
+                    $("#close").addClass('hidden');
+                    $("#saveuser").addClass('hidden');
+                    $("#saveclose").removeClass('hidden');
+                    $("#promptmessage").removeClass('hidden');
                     $('#promptmessage').html('保存成功！');
 
                 }
