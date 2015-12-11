@@ -8,7 +8,7 @@ var data = [
         children: [
             {
                 name: '子菜单1',
-                url: 'css3test.html'
+                url: 'ejs/usermanagement'
             },
             {
                 name: '子菜单2',

@@ -25,18 +25,40 @@ var actionFunc = {
 
     },
     delete: function (req, res) {
-        var id = JSON.stringify(req.body.id);
+        var id = req.body.id;
         var user = db.collection('user');
-        var objectId=global.ObjectID.createFromHexString(id);
+        var objectId= new global.ObjectID(id);
 
         user.remove({_id:objectId}, function (err, docs) {
             if (err) {
-
+                resobject.success = false;
+                resobject.errormessage = err;
             }
             else {
-
+                resobject.success = true;
 
             }
+            res.send(JSON.stringify(resobject));
+
+        });
+    },
+    update: function (req, res) {
+        var userlist = JSON.parse(req.body.data);
+        var user = db.collection('user');
+        var objectId= new global.ObjectID(userlist.id);
+        var personname=userlist.personname;
+        var username=userlist.username;
+
+        user.update({_id:objectId},{$set:{personname:personname,username:username}},function (err, docs) {
+            if (err) {
+                resobject.success = false;
+                resobject.errormessage = err;
+            }
+            else {
+                resobject.success = true;
+
+            }
+            res.send(JSON.stringify(resobject));
 
         });
     }
