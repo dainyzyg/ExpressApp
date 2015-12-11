@@ -37,9 +37,18 @@ router.all('/ajax/*', function (req, res) {
 router.get('/ejs/*', function (req, res) {
     //var pathObject=path.parse(req.url)
     var urlObject = url.parse(req.url);
-    var jspath = urlObject.pathname.substring(1) + '.js';
+    var jspath = process.cwd() + urlObject.pathname + '.js';
     var ejsname = urlObject.pathname.replace('/ejs/', '');
     var rpath = '..' + urlObject.pathname;
+
+    console.log('*** app start ***');
+    console.log('***      module.filename = ' + module.filename + ' ***');
+    console.log('***           __filename = ' + __filename + ' ***');
+    console.log('***            __dirname = ' + __dirname + ' ***');
+    console.log('***        process.cwd() = ' + process.cwd() + ' ***');
+    console.log('*** require.main.filename= ' + require.main.filename + ' ***');
+    console.log('*** app end ***');
+    console.log('')
     fs.exists(jspath, function (exists) {
         if (!exists) {
             res.render(ejsname);
