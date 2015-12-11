@@ -1,10 +1,33 @@
 var express = require('express');
 var url = require("url");
 var path = require("path");
+var fs = require('fs');
 var router = express.Router();
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('index', {title: 'express'});
+    res.redirect('/login');
+});
+router.get('/login', function (req, res, next) {
+    res.redirect('/login.html');
+});
+router.get('/session', function (req, res) {
+    if (req.session.userInfo) {
+        res.send(JSON.stringify(req.session.userInfo));
+    }
+    else {
+        res.send('null');
+    }
+});
+router.all('*', function (req, res, next) {
+    //console.log('\033[31m', req.url, '\033[91m');
+    if (req.url == '/ajax/login' || req.session.userInfo) {
+        //console.log('\033[31m', 'session:true', '\033[91m');
+        next();
+    }
+    else {
+        console.log('\033[31m', 'session:false', '\033[91m');
+        res.redirect('/login');
+    }
 });
 router.all('/ajax/*', function (req, res) {
     var urlObject = url.parse(req.url);
@@ -12,18 +35,28 @@ router.all('/ajax/*', function (req, res) {
     context.run(req, res);
 });
 router.get('/ejs/*', function (req, res) {
-    var pathObject = path.parse(req.url);
+    //var pathObject=path.parse(req.url)
     var urlObject = url.parse(req.url);
-    var fn = require('..' + urlObject.pathname);
-    //创建promise
-    var promise = new Promise(fn);
-    //绑定处理程序
-    promise.then(function (data) {
-        //promise成功的话会执行这里
-        res.render(pathObject.name, data);
-    }, function (err) {
-        //promise失败会执行这里
-        res.send('页面加载失败！');
+    var jspath = urlObject.pathname.substring(1) + '.js';
+    var ejsname = urlObject.pathname.replace('/ejs/', '');
+    var rpath = '..' + urlObject.pathname;
+    fs.exists(jspath, function (exists) {
+        if (!exists) {
+            res.render(ejsname);
+        }
+        else {
+            var fn = require(rpath);
+            //创建promise
+            var promise = new Promise(fn);
+            //绑定处理程序
+            promise.then(function (data) {
+                //promise成功的话会执行这里
+                res.render(ejsname, data);
+            }, function (err) {
+                //promise失败会执行这里
+                res.send('页面加载失败！');
+            });
+        }
     });
 });
 
