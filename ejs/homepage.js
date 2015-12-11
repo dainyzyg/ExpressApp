@@ -20,12 +20,14 @@ var data = [
         name: '菜单2',
         url: 'toolbar.html'
     }
-]
-module.exports = function (resolve, reject) {
-    var rdata = {
-        menu: data,
-        title: 'hei'
-    };
-    resolve(rdata);
+];
+module.exports = function (req) {
+    return new Promise(function (resolve, reject) {
+        var rdata = {
+            menu: data,
+            title: 'hei'
+        };
+        resolve(rdata);
+    });
 }
 

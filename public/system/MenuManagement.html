@@ -32,6 +32,7 @@
     <script src="../javascripts/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../javascripts/bootstrap.min.js"></script>
+    <!--<script src="../javascripts/testES6.js"></script>-->
 </head>
 <body>
 <ol class="breadcrumb">
@@ -88,7 +89,45 @@
 </body>
 </html>
 <script>
-    function clickItem() {
-        $('#menutable').html(' <tr class="ddtd"><td>Larry</td><td>the Bird</td><td><span class="glyphicon glyphicon-cog ddiconstyle" aria-hidden="true"></span></td><td><span class="glyphicon glyphicon-trash ddiconstyle" aria-hidden="true"></span></td></tr>');
+    'use strict';
+    var meunTree = [
+        {
+            name: '综合办公',
+            children: [
+                {
+                    name: '学生管理',
+                    url: 'generalwork/studentmanagement'
+                },
+                {
+                    name: '教师管理',
+                    url: 'generalwork/studentmanagement'
+                }
+            ]
+        },
+        {
+            name: '系统管理',
+            children: [
+                {
+                    name: '菜单管理',
+                    url: 'generalwork/studentmanagement'
+                },
+                {
+                    name: '用户管理',
+                    url: 'generalwork/studentmanagement'
+                }
+            ]
+        }
+    ]
+    for (var i in meunTree) {
+        var itme = meunTree[i];
+        var tr = $('<tr class="ddtd"></tr>>');
+        var td1 = $('<td onclick="clickItem();"></td>');
+        var td2 = $('<td onclick="clickItem();"></td>');
+        td1.text(itme.name);
+        td2.text(itme.url);
+        var tdEdit = $('<td><span class="glyphicon glyphicon-cog ddiconstyle" aria-hidden="true"></span></td>');
+        var tdDelete = $('<td><span class="glyphicon glyphicon-trash ddiconstyle" aria-hidden="true"></span></td>');
+        tr.append(td1).append(td2).append(tdEdit).append(tdDelete);
+        $('#menutable').append(tr);
     }
 </script>

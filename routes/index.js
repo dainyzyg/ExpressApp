@@ -25,7 +25,7 @@ router.all('*', function (req, res, next) {
         next();
     }
     else {
-        console.log('\033[31m', 'session:false', '\033[91m');
+        //console.log('\033[31m', 'session:false', '\033[91m');
         res.redirect('/login');
     }
 });
@@ -47,7 +47,7 @@ router.get('/ejs/*', function (req, res) {
         else {
             var fn = require(rpath);
             //创建promise
-            var promise = new Promise(fn);
+            var promise = fn(req);
             //绑定处理程序
             promise.then(function (data) {
                 //promise成功的话会执行这里
